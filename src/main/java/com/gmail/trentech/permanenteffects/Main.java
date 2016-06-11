@@ -21,20 +21,20 @@ public class Main {
 
 	private static Game game;
 	private static Logger log;
-	private static PluginContainer plugin;	
+	private static PluginContainer plugin;
 
 	@Listener
-    public void onPreInitializationEvent(GamePreInitializationEvent event) {
+	public void onPreInitializationEvent(GamePreInitializationEvent event) {
 		game = Sponge.getGame();
 		plugin = getGame().getPluginManager().getPlugin(Resource.ID).get();
 		log = getPlugin().getLogger();
 	}
 
 	@Listener
-    public void onInitializationEvent(GameInitializationEvent event) {
+	public void onInitializationEvent(GameInitializationEvent event) {
 		getGame().getCommandManager().register(this, new CommandManager().getCmd(), "effects", "e");
-		
-		getGame().getEventManager().registerListeners(this, new EventManager());	
+
+		getGame().getEventManager().registerListeners(this, new EventManager());
 	}
 
 	public static Game getGame() {

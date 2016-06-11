@@ -14,27 +14,27 @@ public class EventManager {
 
 	public static HashMap<UUID, PotionEffectData> hash = new HashMap<>();
 
-    @Listener
-    public void onDestructEntityEvent(DestructEntityEvent.Death event) {
-    	if(!(event.getTargetEntity() instanceof Player)) {
-    		return;
-    	}
-    	Player player = (Player) event.getTargetEntity();
-    	UUID uuid = player.getUniqueId();
-    	
-    	Optional<PotionEffectData> optionalEffects = player.get(PotionEffectData.class);
-    	
-    	if(optionalEffects.isPresent()) {
-    		hash.put(uuid, optionalEffects.get());
-    	}
-    }
-    
+	@Listener
+	public void onDestructEntityEvent(DestructEntityEvent.Death event) {
+		if (!(event.getTargetEntity() instanceof Player)) {
+			return;
+		}
+		Player player = (Player) event.getTargetEntity();
+		UUID uuid = player.getUniqueId();
+
+		Optional<PotionEffectData> optionalEffects = player.get(PotionEffectData.class);
+
+		if (optionalEffects.isPresent()) {
+			hash.put(uuid, optionalEffects.get());
+		}
+	}
+
 	@Listener
 	public void onRespawnPlayerEvent(RespawnPlayerEvent event) {
 		Player player = event.getTargetEntity();
 		UUID uuid = player.getUniqueId();
-		
-		if(hash.containsKey(uuid)) {
+
+		if (hash.containsKey(uuid)) {
 			Main.getGame().getScheduler().createTaskBuilder().delayTicks(10).execute(e -> {
 				player.offer(hash.get(uuid));
 				hash.remove(uuid);
