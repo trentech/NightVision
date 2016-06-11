@@ -1,7 +1,9 @@
-package com.gmail.trentech.nightvision;
+package com.gmail.trentech.permanenteffects.utils;
 
 import java.io.File;
 import java.io.IOException;
+
+import com.gmail.trentech.permanenteffects.Main;
 
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
@@ -14,7 +16,7 @@ public class ConfigManager {
 	private ConfigurationLoader<CommentedConfigurationNode> loader;
 
 	public ConfigManager() {
-		String folder = "config" + File.separator + "nightvision";
+		String folder = "config" + File.separator + "permanenteffects";
         if (!new File(folder).isDirectory()) {
         	new File(folder).mkdirs();
         }
@@ -30,16 +32,6 @@ public class ConfigManager {
 
 	public CommentedConfigurationNode getConfig() {
 		return config;
-	}
-
-	public void init() {
-		if(config.getNode("message_on").isVirtual()){
-			config.getNode("message_on").setValue("&2Night vision enabled");
-		}
-		if(config.getNode("message_off").isVirtual()){
-			config.getNode("message_off").setValue("&2Night vision disabled");
-		}
-		save();
 	}
 
 	private void create(){

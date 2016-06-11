@@ -24,7 +24,7 @@ repositories {
 }
 
 blossom {
-    String path = 'src/main/java/com/gmail/trentech/nightvision/Resource.java'
+    String path = 'src/main/java/com/gmail/trentech/permanenteffects/utils/Resource.java'
     replaceToken '@project.version@', project.version, path
 }
 
@@ -42,5 +42,5 @@ jar {
     configurations.shade.copyRecursive().setTransitive(false).each { artifact ->
       from (zipTree(artifact))
     }
-    baseName = "nightvision-${project.apiVersion.split("-")[0]}"
+    baseName = "permanenteffects-${project.apiVersion.split("-")[0]}"
 }

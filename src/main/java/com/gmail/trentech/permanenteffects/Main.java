@@ -1,21 +1,21 @@
-package com.gmail.trentech.nightvision;
+package com.gmail.trentech.permanenteffects;
 
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.command.args.GenericArguments;
-import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
-import org.spongepowered.api.text.Text;
+
+import com.gmail.trentech.permanenteffects.commands.CommandManager;
+import com.gmail.trentech.permanenteffects.utils.Resource;
 
 import me.flibio.updatifier.Updatifier;
 
-@Updatifier(repoName = "NightVision", repoOwner = "TrenTech", version = Resource.VERSION)
+@Updatifier(repoName = "PermanentEffects", repoOwner = "TrenTech", version = Resource.VERSION)
 @Plugin(id = Resource.ID, name = Resource.NAME, authors = Resource.AUTHOR, url = Resource.URL, dependencies = {@Dependency(id = "Updatifier", optional = true)})
 public class Main {
 
@@ -32,13 +32,9 @@ public class Main {
 
 	@Listener
     public void onInitializationEvent(GameInitializationEvent event) {
-		getGame().getCommandManager().register(this, CommandSpec.builder()
-			    .permission("nightvision.cmd.light")
-			    .arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))))
-			    .executor(new CMDLight())
-			    .build(), "light", "l");
+		getGame().getCommandManager().register(this, new CommandManager().getCmd(), "effects", "e");
 		
-		new ConfigManager().init();
+		getGame().getEventManager().registerListeners(this, new EventManager());	
 	}
 
 	public static Game getGame() {
