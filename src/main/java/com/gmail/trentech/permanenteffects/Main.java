@@ -16,7 +16,7 @@ import com.gmail.trentech.permanenteffects.utils.Resource;
 import me.flibio.updatifier.Updatifier;
 
 @Updatifier(repoName = "PermanentEffects", repoOwner = "TrenTech", version = Resource.VERSION)
-@Plugin(id = Resource.ID, name = Resource.NAME, authors = Resource.AUTHOR, url = Resource.URL, dependencies = {@Dependency(id = "Updatifier", optional = true)})
+@Plugin(id = Resource.ID, name = Resource.NAME, authors = Resource.AUTHOR, url = Resource.URL, dependencies = { @Dependency(id = "Updatifier", optional = true) })
 public class Main {
 
 	private static Game game;

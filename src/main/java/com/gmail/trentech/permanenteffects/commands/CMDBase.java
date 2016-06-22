@@ -43,10 +43,7 @@ public class CMDBase implements CommandExecutor {
 
 		this.node = config.getNode(node, "message");
 
-		Text text = Text.builder().color(TextColors.GREEN)
-				.onHover(TextActions.showText(Text.of("Set ", node.replace("_", " "), " effect")))
-				.onClick(TextActions.runCommand("/permanenteffects:effects " + command))
-				.append(Text.of(" /effects " + command)).build();
+		Text text = Text.builder().color(TextColors.GREEN).onHover(TextActions.showText(Text.of("Set ", node.replace("_", " "), " effect"))).onClick(TextActions.runCommand("/permanenteffects:effects " + command)).append(Text.of(" /effects " + command)).build();
 
 		CMDEffects.map.put(command + ":" + node, text);
 	}
