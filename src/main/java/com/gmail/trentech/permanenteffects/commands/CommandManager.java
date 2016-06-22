@@ -11,43 +11,117 @@ import ninja.leaping.configurate.ConfigurationNode;
 
 public class CommandManager {
 
-	private CommandSpec cmdAbsorbtion = CommandSpec.builder().permission("nightvision.cmd.effects.absorbtion").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Absorbtion()).build();
+	private CommandSpec cmdAbsorbtion = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.absorbtion")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Absorbtion())
+			.build();
 
-	private CommandSpec cmdBlind = CommandSpec.builder().permission("nightvision.cmd.effects.blind").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Blind()).build();
+	private CommandSpec cmdBlind = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.blind")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Blind())
+			.build();
 
-	private CommandSpec cmdFire = CommandSpec.builder().permission("nightvision.cmd.effects.fire").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Fire()).build();
+	private CommandSpec cmdFire = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.fire")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Fire())
+			.build();
 
-	private CommandSpec cmdHaste = CommandSpec.builder().permission("nightvision.cmd.effects.haste").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Haste()).build();
+	private CommandSpec cmdHaste = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.haste")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Haste())
+			.build();
 
-	private CommandSpec cmdHealth = CommandSpec.builder().permission("nightvision.cmd.effects.health").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Health()).build();
+	private CommandSpec cmdHealth = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.health")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Health())
+			.build();
 
-	private CommandSpec cmdHunger = CommandSpec.builder().permission("nightvision.cmd.effects.hunger").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Hunger()).build();
+	private CommandSpec cmdHunger = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.hunger")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Hunger()).build();
 
-	private CommandSpec cmdFatigue = CommandSpec.builder().permission("nightvision.cmd.effects.fatigue").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Fatigue()).build();
+	private CommandSpec cmdFatigue = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.fatigue")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Fatigue())
+			.build();
 
-	private CommandSpec cmdInvisible = CommandSpec.builder().permission("nightvision.cmd.effects.invisible").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Invisible()).build();
+	private CommandSpec cmdInvisible = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.invisible")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Invisible())
+			.build();
 
-	private CommandSpec cmdJump = CommandSpec.builder().permission("nightvision.cmd.effects.jump").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Jump()).build();
+	private CommandSpec cmdJump = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.jump")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Jump())
+			.build();
 
-	private CommandSpec cmdNight = CommandSpec.builder().permission("nightvision.cmd.effects.night").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Night()).build();
+	private CommandSpec cmdNight = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.night")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Night())
+			.build();
 
-	private CommandSpec cmdRegen = CommandSpec.builder().permission("nightvision.cmd.effects.regen").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Regen()).build();
+	private CommandSpec cmdRegen = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.regen")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Regen())
+			.build();
 
-	private CommandSpec cmdResist = CommandSpec.builder().permission("nightvision.cmd.effects.resist").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Resist()).build();
+	private CommandSpec cmdResist = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.resist")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Resist())
+			.build();
 
-	private CommandSpec cmdSaturation = CommandSpec.builder().permission("nightvision.cmd.effects.saturation").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Saturation()).build();
+	private CommandSpec cmdSaturation = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.saturation")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Saturation())
+			.build();
 
-	private CommandSpec cmdSlow = CommandSpec.builder().permission("nightvision.cmd.effects.slow").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Slow()).build();
+	private CommandSpec cmdSlow = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.slow")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Slow())
+			.build();
 
-	private CommandSpec cmdSpeed = CommandSpec.builder().permission("nightvision.cmd.effects.speed").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Speed()).build();
+	private CommandSpec cmdSpeed = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.speed")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Speed()).build();
 
-	private CommandSpec cmdStrength = CommandSpec.builder().permission("nightvision.cmd.effects.strength").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Strength()).build();
+	private CommandSpec cmdStrength = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.strength")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Strength())
+			.build();
 
-	private CommandSpec cmdWater = CommandSpec.builder().permission("nightvision.cmd.effects.water").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Water()).build();
+	private CommandSpec cmdWater = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.water")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Water())
+			.build();
 
-	private CommandSpec cmdWeak = CommandSpec.builder().permission("nightvision.cmd.effects.weak").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Weak()).build();
+	private CommandSpec cmdWeak = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.weak")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Weak())
+			.build();
 
-	private CommandSpec cmdWither = CommandSpec.builder().permission("nightvision.cmd.effects.wither").arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player")))).executor(new CMD.Wither()).build();
+	private CommandSpec cmdWither = CommandSpec.builder()
+			.permission("nightvision.cmd.effects.wither")
+			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("value"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.executor(new CMD.Wither())
+			.build();
 
 	public CommandSpec getCmd() {
 		Builder cmd = CommandSpec.builder().permission("nightvision.cmd.effects").executor(new CMDEffects());
