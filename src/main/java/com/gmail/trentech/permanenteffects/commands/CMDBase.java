@@ -2,6 +2,7 @@ package com.gmail.trentech.permanenteffects.commands;
 
 import java.util.Optional;
 
+import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
@@ -16,7 +17,6 @@ import org.spongepowered.api.text.action.TextActions;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.text.serializer.TextSerializers;
 
-import com.gmail.trentech.permanenteffects.Main;
 import com.gmail.trentech.permanenteffects.utils.ConfigManager;
 
 import ninja.leaping.configurate.ConfigurationNode;
@@ -68,7 +68,7 @@ public class CMDBase implements CommandExecutor {
 			}
 			String playerName = args.<String> getOne("player").get();
 
-			Optional<Player> optionalPlayer = Main.getGame().getServer().getPlayer(playerName);
+			Optional<Player> optionalPlayer = Sponge.getServer().getPlayer(playerName);
 
 			if (!optionalPlayer.isPresent()) {
 				src.sendMessage(Text.of(TextColors.RED, playerName, " not found"));
@@ -84,7 +84,7 @@ public class CMDBase implements CommandExecutor {
 		}
 
 		if (value.equalsIgnoreCase("on")) {
-			PotionEffect effect = Main.getGame().getRegistry().createBuilder(PotionEffect.Builder.class).potionType(potionType).duration(1000000).amplifier(1).particles(false).build();
+			PotionEffect effect = Sponge.getRegistry().createBuilder(PotionEffect.Builder.class).potionType(potionType).duration(1000000).amplifier(1).particles(false).build();
 
 			PotionEffectData effects = player.getOrCreate(PotionEffectData.class).get();
 			effects.addElement(effect);

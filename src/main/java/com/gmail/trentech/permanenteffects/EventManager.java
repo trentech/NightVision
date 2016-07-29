@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.spongepowered.api.Sponge;
 import org.spongepowered.api.data.manipulator.mutable.PotionEffectData;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -35,7 +36,7 @@ public class EventManager {
 		UUID uuid = player.getUniqueId();
 
 		if (hash.containsKey(uuid)) {
-			Main.getGame().getScheduler().createTaskBuilder().delayTicks(10).execute(e -> {
+			Sponge.getScheduler().createTaskBuilder().delayTicks(10).execute(e -> {
 				player.offer(hash.get(uuid));
 				hash.remove(uuid);
 			}).submit(Main.getPlugin());
