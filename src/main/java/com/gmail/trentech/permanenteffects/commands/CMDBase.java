@@ -36,8 +36,8 @@ public class CMDBase implements CommandExecutor {
 
 		if (config.getNode(node).isVirtual()) {
 			config.getNode(node, "enable").setValue(true);
-			config.getNode(node, "message", "on").setValue("&e" + potionType.getName().replace("potion.", "").toUpperCase() + " &2effect enabled");
-			config.getNode(node, "message", "off").setValue("&e" + potionType.getName().replace("potion.", "").toUpperCase() + " &2effect disabled");
+			config.getNode(node, "message", "on").setValue("&e" + potionType.getName().replace("EFFECT.", "").toUpperCase() + " &2effect enabled");
+			config.getNode(node, "message", "off").setValue("&e" + potionType.getName().replace("EFFECT.", "").toUpperCase() + " &2effect disabled");
 			configManager.save();
 		}
 

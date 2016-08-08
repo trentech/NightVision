@@ -72,7 +72,7 @@ public class CMD {
 
 	public static class Resist extends CMDBase {
 		public Resist() {
-			super("resist", "resistance", PotionEffectTypes.RESISTANCE);
+			super("resistance", "resistance", PotionEffectTypes.RESISTANCE);
 		}
 	}
 
