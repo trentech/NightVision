@@ -50,35 +50,30 @@ public class CMDBase implements CommandExecutor {
 
 	public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 		if (!args.hasAny("value")) {
-			src.sendMessage(Text.of(TextColors.YELLOW, "/", command, " <on/off> [player]"));
-			return CommandResult.empty();
+			throw new CommandException(Text.of(TextColors.YELLOW, "/", command, " <on/off> [player]"));
 		}
 		String value = args.<String> getOne("value").get();
 
 		if (!value.equalsIgnoreCase("on") && !value.equalsIgnoreCase("off")) {
-			src.sendMessage(Text.of(TextColors.YELLOW, "/", command, " <on/off> [player]"));
-			return CommandResult.empty();
+			throw new CommandException(Text.of(TextColors.YELLOW, "/", command, " <on/off> [player]"));
 		}
 
 		Player player;
 		if (args.hasAny("player")) {
 			if (!src.hasPermission("permanenteffects.cmd.effects." + command + ".others")) {
-				src.sendMessage(Text.of(TextColors.RED, "You do not have permission to set effects on other players"));
-				return CommandResult.empty();
+				throw new CommandException(Text.of(TextColors.RED, "You do not have permission to set effects on other players"));
 			}
 			String playerName = args.<String> getOne("player").get();
 
 			Optional<Player> optionalPlayer = Sponge.getServer().getPlayer(playerName);
 
 			if (!optionalPlayer.isPresent()) {
-				src.sendMessage(Text.of(TextColors.RED, playerName, " not found"));
-				return CommandResult.empty();
+				throw new CommandException(Text.of(TextColors.RED, playerName, " not found"));
 			}
 			player = optionalPlayer.get();
 		} else {
 			if (!(src instanceof Player)) {
-				src.sendMessage(Text.of(TextColors.RED, "Must specify player from console"));
-				return CommandResult.empty();
+				throw new CommandException(Text.of(TextColors.RED, "Must specify player from console"));
 			}
 			player = (Player) src;
 		}
