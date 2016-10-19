@@ -9,6 +9,7 @@ import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
+import com.gmail.trentech.helpme.Help;
 import com.gmail.trentech.permanenteffects.commands.CommandManager;
 import com.gmail.trentech.permanenteffects.utils.Resource;
 
@@ -32,6 +33,16 @@ public class Main {
 		Sponge.getCommandManager().register(this, new CommandManager().getCmd(), "effects", "e");
 
 		Sponge.getEventManager().registerListeners(this, new EventManager());
+		
+		if(Sponge.getPluginManager().isLoaded("helpme")) {
+			Help help = new Help("effects", "effects", "Permanently enable or disable effects")
+					.setPermission("permanenteffects.cmd.effects")
+					.addUsage("/effects <effect> <on/off> [player]")
+					.addExample("/effects blind on");
+			
+			Help.register(help);
+		}
+
 	}
 
 	public static Logger getLog() {
