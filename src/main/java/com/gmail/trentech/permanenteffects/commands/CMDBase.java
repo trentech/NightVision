@@ -49,10 +49,10 @@ public class CMDBase implements CommandExecutor {
 	}
 
 	public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
-		if (!args.hasAny("value")) {
+		if (!args.hasAny("on|off")) {
 			throw new CommandException(Text.of(TextColors.YELLOW, "/", command, " <on/off> [player]"));
 		}
-		String value = args.<String> getOne("value").get();
+		String value = args.<String> getOne("on|off").get();
 
 		if (!value.equalsIgnoreCase("on") && !value.equalsIgnoreCase("off")) {
 			throw new CommandException(Text.of(TextColors.YELLOW, "/", command, " <on/off> [player]"));
