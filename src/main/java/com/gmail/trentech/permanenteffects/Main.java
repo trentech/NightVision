@@ -1,7 +1,12 @@
 package com.gmail.trentech.permanenteffects;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import org.slf4j.Logger;
 import org.spongepowered.api.Sponge;
+import org.spongepowered.api.config.ConfigDir;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
@@ -14,6 +19,7 @@ import com.gmail.trentech.permanenteffects.utils.Resource;
 import com.gmail.trentech.pjc.help.Argument;
 import com.gmail.trentech.pjc.help.Help;
 import com.gmail.trentech.pjc.help.Usage;
+import com.google.inject.Inject;
 
 import me.flibio.updatifier.Updatifier;
 
@@ -21,13 +27,26 @@ import me.flibio.updatifier.Updatifier;
 @Plugin(id = Resource.ID, name = Resource.NAME, version = Resource.VERSION, description = Resource.DESCRIPTION, authors = Resource.AUTHOR, url = Resource.URL, dependencies = { @Dependency(id = "Updatifier", optional = true), @Dependency(id = "pjc", optional = false) })
 public class Main {
 
-	private static Logger log;
+	@Inject
+	@ConfigDir(sharedRoot = false)
+	private Path path;
+
+	@Inject
+	private Logger log;
+
 	private static PluginContainer plugin;
+	private static Main instance;
 
 	@Listener
 	public void onPreInitializationEvent(GamePreInitializationEvent event) {
 		plugin = Sponge.getPluginManager().getPlugin(Resource.ID).get();
-		log = getPlugin().getLogger();
+		instance = this;
+
+		try {
+			Files.createDirectories(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Listener
@@ -48,11 +67,19 @@ public class Main {
 		Help.register(help);
 	}
 
-	public static Logger getLog() {
+	public Logger getLog() {
 		return log;
+	}
+
+	public Path getPath() {
+		return path;
 	}
 
 	public static PluginContainer getPlugin() {
 		return plugin;
+	}
+
+	public static Main instance() {
+		return instance;
 	}
 }
