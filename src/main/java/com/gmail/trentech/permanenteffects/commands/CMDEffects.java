@@ -16,7 +16,8 @@ import org.spongepowered.api.service.pagination.PaginationService;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 
-import com.gmail.trentech.permanenteffects.utils.ConfigManager;
+import com.gmail.trentech.permanenteffects.Main;
+import com.gmail.trentech.pjc.core.ConfigManager;
 
 public class CMDEffects implements CommandExecutor {
 
@@ -33,7 +34,7 @@ public class CMDEffects implements CommandExecutor {
 		for (Entry<String, Text> entry : map.entrySet()) {
 			String[] arg = entry.getKey().split(":");
 
-			if (src.hasPermission("permanenteffects.cmd.effects." + arg[0]) && new ConfigManager().getConfig().getNode(arg[1], "enable").getBoolean()) {
+			if (src.hasPermission("permanenteffects.cmd.effects." + arg[0]) && ConfigManager.get(Main.getPlugin()).getConfig().getNode(arg[1], "enable").getBoolean()) {
 				list.add(entry.getValue());
 			}
 		}

@@ -17,7 +17,9 @@ import org.spongepowered.api.text.action.TextActions;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.text.serializer.TextSerializers;
 
-import com.gmail.trentech.permanenteffects.utils.ConfigManager;
+import com.gmail.trentech.permanenteffects.Main;
+import com.gmail.trentech.pjc.core.ConfigManager;
+import com.gmail.trentech.pjc.help.Help;
 
 import ninja.leaping.configurate.ConfigurationNode;
 
@@ -27,7 +29,7 @@ public class CMDBase implements CommandExecutor {
 	private final PotionEffectType potionType;
 	private final ConfigurationNode node;
 
-	private ConfigManager configManager = new ConfigManager();
+	private ConfigManager configManager = ConfigManager.get(Main.getPlugin());
 	private ConfigurationNode config = configManager.getConfig();
 
 	public CMDBase(String command, String node, PotionEffectType potionType) {
@@ -50,12 +52,13 @@ public class CMDBase implements CommandExecutor {
 
 	public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 		if (!args.hasAny("on|off")) {
-			throw new CommandException(Text.of(TextColors.YELLOW, "/", command, " <on/off> [player]"));
+			throw new CommandException(Help.get(command).get().getUsageText());
+			
 		}
 		String value = args.<String> getOne("on|off").get();
 
 		if (!value.equalsIgnoreCase("on") && !value.equalsIgnoreCase("off")) {
-			throw new CommandException(Text.of(TextColors.YELLOW, "/", command, " <on/off> [player]"));
+			throw new CommandException(Help.get(command).get().getUsageText());
 		}
 
 		Player player;

@@ -5,7 +5,8 @@ import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.command.spec.CommandSpec.Builder;
 import org.spongepowered.api.text.Text;
 
-import com.gmail.trentech.permanenteffects.utils.ConfigManager;
+import com.gmail.trentech.permanenteffects.Main;
+import com.gmail.trentech.pjc.core.ConfigManager;
 
 import ninja.leaping.configurate.ConfigurationNode;
 
@@ -126,7 +127,7 @@ public class CommandManager {
 	public CommandSpec getCmd() {
 		Builder cmd = CommandSpec.builder().permission("permanenteffects.cmd.effects").executor(new CMDEffects());
 
-		ConfigurationNode config = new ConfigManager().getConfig();
+		ConfigurationNode config = ConfigManager.get(Main.getPlugin()).getConfig();
 
 		if (config.getNode("absorbtion", "enable").getBoolean()) {
 			cmd.child(cmdAbsorbtion, "absorbtion", "a");
