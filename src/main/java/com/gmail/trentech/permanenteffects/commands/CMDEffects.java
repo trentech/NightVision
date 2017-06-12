@@ -42,7 +42,7 @@ public class CMDEffects implements CommandExecutor {
 		pages.contents(list);
 
 		pages.sendTo(src);
-
+		src.sendMessage(Text.of(TextColors.YELLOW, "effects <command> --help"));
 		return CommandResult.success();
 	}
 }

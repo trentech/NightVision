@@ -1,5 +1,6 @@
 package com.gmail.trentech.permanenteffects.commands;
 
+import org.spongepowered.api.command.args.CommandElement;
 import org.spongepowered.api.command.args.GenericArguments;
 import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.command.spec.CommandSpec.Builder;
@@ -12,115 +13,117 @@ import ninja.leaping.configurate.ConfigurationNode;
 
 public class CommandManager {
 
+	private CommandElement element = GenericArguments.flags().flag("help").setAcceptsArbitraryLongFlags(true).buildWith(GenericArguments.none());
+	
 	private CommandSpec cmdAbsorbtion = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.absorbtion")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Absorbtion())
 			.build();
 
 	private CommandSpec cmdBlind = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.blind")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Blind())
 			.build();
 
 	private CommandSpec cmdFire = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.fire")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Fire())
 			.build();
 
 	private CommandSpec cmdHaste = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.haste")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Haste())
 			.build();
 
 	private CommandSpec cmdHealth = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.health")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Health())
 			.build();
 
 	private CommandSpec cmdHunger = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.hunger")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Hunger()).build();
 
 	private CommandSpec cmdFatigue = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.fatigue")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Fatigue())
 			.build();
 
 	private CommandSpec cmdInvisible = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.invisible")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Invisible())
 			.build();
 
 	private CommandSpec cmdJump = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.jump")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Jump())
 			.build();
 
 	private CommandSpec cmdNight = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.night")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Night())
 			.build();
 
 	private CommandSpec cmdRegen = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.regen")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Regen())
 			.build();
 
 	private CommandSpec cmdResist = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.resist")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Resist())
 			.build();
 
 	private CommandSpec cmdSaturation = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.saturation")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Saturation())
 			.build();
 
 	private CommandSpec cmdSlow = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.slow")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Slow())
 			.build();
 
 	private CommandSpec cmdSpeed = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.speed")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Speed()).build();
 
 	private CommandSpec cmdStrength = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.strength")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Strength())
 			.build();
 
 	private CommandSpec cmdWater = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.water")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Water())
 			.build();
 
 	private CommandSpec cmdWeak = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.weak")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Weak())
 			.build();
 
 	private CommandSpec cmdWither = CommandSpec.builder()
 			.permission("permanenteffects.cmd.effects.wither")
-			.arguments(GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
+			.arguments(element, GenericArguments.optional(GenericArguments.string(Text.of("on|off"))), GenericArguments.optional(GenericArguments.string(Text.of("player"))))
 			.executor(new CMD.Wither())
 			.build();
 

@@ -51,14 +51,21 @@ public class CMDBase implements CommandExecutor {
 	}
 
 	public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
+		Help help = Help.get("effects " + command).get();
+		
+		if (args.hasAny("help")) {			
+			help.execute(src);
+			return CommandResult.empty();
+		}
+		
 		if (!args.hasAny("on|off")) {
-			throw new CommandException(Help.get(command).get().getUsageText());
+			throw new CommandException(help.getUsageText());
 			
 		}
 		String value = args.<String> getOne("on|off").get();
 
 		if (!value.equalsIgnoreCase("on") && !value.equalsIgnoreCase("off")) {
-			throw new CommandException(Help.get(command).get().getUsageText());
+			throw new CommandException(help.getUsageText());
 		}
 
 		Player player;
